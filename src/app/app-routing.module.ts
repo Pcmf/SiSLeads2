@@ -4,12 +4,12 @@ import { GeDashboardComponent } from './Gestor/ge-dashboard/ge-dashboard.compone
 import { AnDashboardComponent } from './Analista/an-dashboard/an-dashboard.component';
 import { AdmDashboardComponent } from './Admin/adm-dashboard/adm-dashboard.component';
 import { LoginComponent } from './login/login.component';
-
+import { AuthGuardService } from './auth-guard.service';
 
 const routes: Routes = [
-  {path: 'gestor', component: GeDashboardComponent},
-  {path: 'analista', component: AnDashboardComponent},
-  {path: 'admin', component: AdmDashboardComponent},
+  {path: 'gestor', component: GeDashboardComponent, canActivate: [AuthGuardService]},
+  {path: 'analista', component: AnDashboardComponent, canActivate: [AuthGuardService]},
+  {path: 'admin', component: AdmDashboardComponent, canActivate: [AuthGuardService]},
   {path: '**', component: LoginComponent},
   {path: '',  redirectTo: '/login', pathMatch: 'full' }
 ];

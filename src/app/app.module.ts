@@ -12,6 +12,9 @@ import { GeDashboardComponent } from './Gestor/ge-dashboard/ge-dashboard.compone
 import { AdmDashboardComponent } from './Admin/adm-dashboard/adm-dashboard.component';
 import { AnDashboardComponent } from './Analista/an-dashboard/an-dashboard.component';
 import { LoginComponent } from './login/login.component';
+import { DataService } from './Servicos/data.service';
+import { AuthGuardService } from './auth-guard.service';
+import { MenuComponent } from './Gestor/menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,8 @@ import { LoginComponent } from './login/login.component';
     GeDashboardComponent,
     AdmDashboardComponent,
     AnDashboardComponent,
-    LoginComponent
+    LoginComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +33,7 @@ import { LoginComponent } from './login/login.component';
     MatModulesImports,
     FormsModule
   ],
-  providers: [],
+  providers: [DataService, AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
