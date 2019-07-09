@@ -10,7 +10,7 @@ const routes: Routes = [
   {path: 'gestor', component: GeDashboardComponent},
   {path: 'analista', component: AnDashboardComponent},
   {path: 'admin', component: AdmDashboardComponent},
-  {path: '', component: LoginComponent},
+  {path: '**', component: LoginComponent},
   {path: '',  redirectTo: '/login', pathMatch: 'full' }
 ];
 

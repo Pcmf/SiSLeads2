@@ -1,5 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+
+import { MatModulesImports } from './MatModulesImport';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,8 +22,12 @@ import { LoginComponent } from './login/login.component';
     LoginComponent
   ],
   imports: [
-  BrowserModule,
-    AppRoutingModule
+    BrowserModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    AppRoutingModule,
+    MatModulesImports,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
