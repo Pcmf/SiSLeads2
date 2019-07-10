@@ -1,8 +1,21 @@
-<mat-toolbar color="accent" class="mat-elevation-z8">
-    <span>GestLifes v2.0</span>
-  
-    <!-- This fills the remaining space of the current row -->
-    <span class="example-fill-remaining-space"></span>
-  
-    <span>Right Aligned Text</span>
+<mat-toolbar color="accent" class="mat-elevation-z6">
+    <div>
+        <a routerLink="/gestor">GESTLIFES v2.0</a>
+    </div>
+    <div fxFlex fxLayout fxLayoutAlign="end">
+        <ul fxLayout fxLayoutGap="15px" class="navigation-items">
+            <li>
+                <a routerLink="/owner">Owner Actions</a>
+            </li>
+            <li>
+                <a routerLink="/">Portal</a>
+            </li>
+
+          <li>
+            <span (click)="logout()">
+              SAIR
+            </span>
+          </li>
+        </ul>
+    </div>
   </mat-toolbar>

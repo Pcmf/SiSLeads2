@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { MatModulesImports } from './MatModulesImport';
 
@@ -31,7 +32,8 @@ import { MenuComponent } from './Gestor/menu/menu.component';
     HttpClientModule,
     AppRoutingModule,
     MatModulesImports,
-    FormsModule
+    FormsModule,
+    FlexLayoutModule
   ],
   providers: [DataService, AuthGuardService],
   bootstrap: [AppComponent]

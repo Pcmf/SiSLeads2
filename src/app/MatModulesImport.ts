@@ -1,5 +1,11 @@
 import { NgModule } from '@angular/core';
-import { MatInputModule, MatButtonModule, MatSelectModule, MatIconModule, MatDatepickerModule } from '@angular/material';
+import { MatInputModule,
+    MatButtonModule,
+    MatSelectModule,
+    MatIconModule,
+    MatDatepickerModule,
+    MatTabsModule,
+    MatSidenavModule } from '@angular/material';
 import {MatDialogModule } from '@angular/material/dialog';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
@@ -17,7 +23,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
         MatDialogModule,
         MatToolbarModule,
         MatCardModule,
-        MatTableModule
+        MatTableModule,
+        MatTabsModule,
+        MatSidenavModule
     ],
     exports: [
         MatInputModule,
@@ -28,6 +36,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
         MatDialogModule,
         MatToolbarModule,
         MatCardModule,
-        MatTableModule
+        MatTableModule,
+        MatTabsModule,
+        MatSidenavModule
     ]
 }) export class MatModulesImports { }
