@@ -11,8 +11,102 @@
     margin: 40px 20px 0 20px;
     flex: 1 0 300px;
 }
-
-.dash-card-2x{
-    width: 600px;
+.dash-card-mural{
+    height: 350px;
 }
 
+.mat-icon{
+    transform: scale(6);
+}
+
+mat-card-content{
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: auto;
+}
+
+.leads-novas, leads-agendadas{
+    width: 100px;
+    height: 100px;
+}
+
+.leads-puxar{
+    width: 100px;
+    height: 65px;
+    padding: 35px 10px 1px 20px;
+    border-radius: 8px;
+    background-color: green;
+    color: white;
+}
+
+.card-block{
+    width: 90%;
+    height: 80px;
+    margin: auto;
+}
+
+
+.card-block span{
+    font-size: 1.3em;
+    font-weight: 500;
+}
+
+.text-info{
+    font-size: 1.2em;
+    color: darkblue;
+}
+
+.text-danger{
+    font-size: 1.2em;
+    color: darkred;
+    
+}
+
+.card-block-doc{
+    width: 70%;
+    font-size: 1em;
+}
+
+.text-right{
+    float: right;
+}
+
+.mat-card-content-doc{
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin: auto;
+    
+}
+
+.leads-recuperar{
+    width: 100px;
+    height: 65px;
+    padding: 35px 10px 1px 20px;
+    border-radius: 8px;
+    background-color: orange;
+    color: white;
+}
+
+/* Pesquisa */
+.search-form {
+    min-width: 50px;
+    max-width: 200px;
+    width: 100%;
+  }
+  
+  .search-full-width {
+    width: 100%;
+  }
+  
+
+  /* Mural */
+  .mat-card-content-mural{
+      width: 95%;
+      height: 200px;
+      overflow-y: scroll;
+      border: 1px darkgray solid;
+  }

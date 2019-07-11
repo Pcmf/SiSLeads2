@@ -3,50 +3,142 @@
 <div class="container">
 
     <mat-card class="dash-card mat-elevation-z4">
-        <mat-card-title>Puxar</mat-card-title>
+        <mat-card-title>&nbsp;</mat-card-title>
         <mat-card-content>
-            <h1>5</h1>
-            <h1>0</h1>
+            <div class="leads-novas">
+                <h4>Novas</h4>
+                <h1>5</h1>
+            </div>
+            <div class="leads-agendadas">
+                <h4>Agendadas</h4>
+                <h1>12</h1>
+            </div>
+            <div class="leads-puxar pt-5">
+                <span>PUXAR</span>
+                <mat-icon aria-hidden="false" aria-label="Example keyboard_arrow_right icon">keyboard_arrow_right
+                </mat-icon>
+            </div>
         </mat-card-content>
     </mat-card>
 
     <mat-card class="dash-card  mat-elevation-z4">
-        <mat-card-title>Agendados</mat-card-title>
+        <mat-card-title>&nbsp;</mat-card-title>
         <mat-card-content>
-            <h1>5</h1>
-            <h1>0</h1>
+            <div class="card-block">
+                <h1 class="display-1">Agendadas: <span class="text-info">29</span></h1>
+            </div>
+            <div class="card-block">
+                <h1 class="display-1">Anuladas: <span class="text-danger">2000</span></h1>
+            </div>
         </mat-card-content>
     </mat-card>
 
     <mat-card class="dash-card mat-elevation-z4">
         <mat-card-title>Documentação</mat-card-title>
-        <mat-card-content>
-            <h1>5</h1>
-            <h1>0</h1>
+        <mat-card-content class="mat-card-content-doc">
+                <div class="card-block-doc">
+                        <span class="">Aguardam: </span><span class="text-right text-info">20</span>
+                </div>
+                <div class="card-block-doc">
+                        <span class="">Atrasada: </span><span class="text-right text-info">43</span>
+                </div>
+                <div class="card-block-doc">
+                        <span class="">Analista: </span><span class="text-right text-info">3</span>
+                </div>
+                <div class="card-block-doc">
+                        <span class="">Cliente: </span><span class="text-right text-info">20 / 5</span>
+                </div>
+              
         </mat-card-content>
     </mat-card>
 
-    <mat-card class="dash-card dash-card-2x mat-elevation-z4">
+    <mat-card class="dash-card mat-elevation-z4">
+        <mat-card-title>Recuperação</mat-card-title>
+        <mat-card-content  class="mat-card-content-doc">
+                <div class="card-block-doc">
+                        <span class="">Para Recuperação: </span><span class="text-right text-info">20</span>
+                </div>
+                <div class="card-block-doc">
+                        <span class="">Em Recuperação: </span><span class="text-right text-info">43</span>
+                </div>
+                <div class="leads-recuperar">
+                        <span>Recuperar</span>
+                        <mat-icon aria-hidden="false" aria-label="Example keyboard_arrow_right icon">keyboard_arrow_right
+                        </mat-icon>
+                </div>        
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card class="dash-card mat-elevation-z4">
+        <mat-card-title>Situação</mat-card-title>
+        <mat-card-content class="mat-card-content-doc">
+                <div class="card-block-doc">
+                        <span class="">Aprovados: </span><span class="text-right text-info">20</span>
+                </div>
+                <div class="card-block-doc">
+                        <span class="">Em analise: </span><span class="text-right text-info">43</span>
+                </div>
+                <div class="card-block-doc">
+                        <span class="">Enviados para Analise: </span><span class="text-right text-info">3</span>
+                </div>
+                <div class="card-block-doc">
+                        <span class="">Contactados Hoje: </span><span class="text-right text-info">20</span>
+                </div>
+              
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card class="dash-card mat-elevation-z4">
         <mat-card-title>Pesquisa</mat-card-title>
         <mat-card-content>
-            <h1>5</h1>
-            <h1>0</h1>
+            <form class="search-form">
+                    <mat-form-field class="search-full-width">
+                        <input matInput placeholder="Procurar" value="">
+                    </mat-form-field>
+                    
+                    <mat-form-field class="search-full-width">
+                            <mat-label>Por</mat-label>
+                            <mat-select>
+                              <mat-option *ngFor="let op of ops" [value]="op">
+                                {{op}}
+                              </mat-option>
+                            </mat-select>
+                    </mat-form-field>
+            </form>
         </mat-card-content>
     </mat-card>
 
-    <mat-card class="dash-card mat-elevation-z4">
-            <mat-card-title>Resumo</mat-card-title>
-            <mat-card-content>
-                <h1>5</h1>
-                <h1>0</h1>
-            </mat-card-content>
-        </mat-card>
-
-    <mat-card class="dash-card mat-elevation-z4">
+    <mat-card class="dash-card dash-card-mural mat-elevation-z4">
         <mat-card-title>Mural</mat-card-title>
         <mat-card-content>
-            <h1>5</h1>
-            <h1>0</h1>
+            <div class="mat-card-content-mural">
+            
+            </div>
+            <mat-form-field class="search-full-width">
+                    <textarea matInput placeholder="Mensagem"></textarea>
+                  </mat-form-field>
         </mat-card-content>
+        <mat-form-field class="">
+                <mat-label>Enviar para</mat-label>
+                <mat-select>
+                  <mat-option *ngFor="let u of muralUsers" [value]="u.id">
+                    {{u.nome}}
+                  </mat-option>
+                </mat-select>
+        </mat-form-field>
     </mat-card>
+
+<!--     <mat-card class="dash-card mat-elevation-z4">
+            <mat-card-title>Ultimos processos criados</mat-card-title>
+            <mat-card-content class="mat-card-content-doc">
+                    <div class="card-block-doc">
+                            <span class="">Aprovados: </span><span class="text-right text-info">20</span>
+                    </div>
+                    <div class="card-block-doc">
+                            <span class="">Em analise: </span><span class="text-right text-info">43</span>
+                    </div>
+
+                  
+            </mat-card-content>
+        </mat-card> -->
 </div>
