@@ -1,4 +1,5 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { DataService } from 'src/app/Servicos/data.service';
 
 @Component({
   selector: 'app-menu',
@@ -7,14 +8,13 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  @Output() public sidenavToggle = new EventEmitter();
 
-  constructor() { }
+  constructor(private dataService: DataService) { }
 
   ngOnInit() {
   }
 
-  public onToggleSidenav = () => {
-    this.sidenavToggle.emit();
+  logout() {
+    this.dataService.logout();
   }
 }
