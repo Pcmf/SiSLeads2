@@ -1,18 +1,28 @@
 
 .container{
-    width: 80%;
+    width: 96%;
     margin: auto;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     }
+.dash-div{
+    height: 350px;
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1 0 700px;
+}
 .dash-card{
     height: 250px;
     margin: 40px 20px 0 20px;
-    flex: 1 0 300px;
+    flex: 1 0 280px;
 }
 .dash-card-mural{
-    height: 350px;
+    height: 410px;
+}
+.dash-card-notifications{
+    height: 120px;
+    margin-top: 10px;
 }
 
 .mat-icon{

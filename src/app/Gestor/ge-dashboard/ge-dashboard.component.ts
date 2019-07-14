@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import * as CanvasJS from './../../../../node_modules/chartJs/canvasjs.min.js';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-ge-dashboard',
@@ -14,9 +16,31 @@ export class GeDashboardComponent implements OnInit {
     { id: 3, nome: 'João', tipo: 'Admin'}
   ];
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
+    const chart = new CanvasJS.Chart('chartContainer', {
+      theme: 'light2',
+      animationEnabled: true,
+      exportEnabled: true,
+      title: {
+        text: ''
+      },
+      data: [{
+        type: 'pie',
+        showInLegend: true,
+        toolTipContent: '<b>{name}</b>: {y} (#percent%)',
+        indexLabel: '{name} - #percent%',
+        dataPoints: [
+          { y: 5, name: 'Aprovados', link: '/aprov' },
+          { y: 12, name: 'Enviados para Analise', link: '/envana' },
+          { y: 6, name: 'Em Analise', link: '/emana' },
+          { y: 1, name: 'Financiados', link: '/finan' }
+        ],
+      }]
+    });
+
+    chart.render();
   }
 
 }
