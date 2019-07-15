@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import * as CanvasJS from './../../../../node_modules/chartJs/canvasjs.min.js';
+// For MDB Angular Free
 import { Router } from '@angular/router';
 
 @Component({
@@ -16,31 +16,30 @@ export class GeDashboardComponent implements OnInit {
     { id: 3, nome: 'João', tipo: 'Admin'}
   ];
 
+  public chartType: string = 'pie';
+
+  public chartDatasets: Array<any> = [
+    { data: [300, 50, 100, 40, 120], label: 'My First dataset' }
+  ];
+
+  public chartLabels: Array<any> = ['Red', 'Green', 'Yellow', 'Grey', 'Dark Grey'];
+
+  public chartColors: Array<any> = [
+    {
+      backgroundColor: ['#F7464A', '#46BFBD', '#FDB45C', '#949FB1', '#4D5360'],
+      hoverBackgroundColor: ['#FF5A5E', '#5AD3D1', '#FFC870', '#A8B3C5', '#616774'],
+      borderWidth: 2,
+    }
+  ];
+
+  public chartOptions: any = {
+    responsive: true
+  };
+  public chartClicked(e: any): void { }
+  public chartHovered(e: any): void { }
+
   constructor(private router: Router) { }
 
   ngOnInit() {
-    const chart = new CanvasJS.Chart('chartContainer', {
-      theme: 'light2',
-      animationEnabled: true,
-      exportEnabled: true,
-      title: {
-        text: ''
-      },
-      data: [{
-        type: 'pie',
-        showInLegend: true,
-        toolTipContent: '<b>{name}</b>: {y} (#percent%)',
-        indexLabel: '{name} - #percent%',
-        dataPoints: [
-          { y: 5, name: 'Aprovados', link: '/aprov' },
-          { y: 12, name: 'Enviados para Analise', link: '/envana' },
-          { y: 6, name: 'Em Analise', link: '/emana' },
-          { y: 1, name: 'Financiados', link: '/finan' }
-        ],
-      }]
-    });
-
-    chart.render();
   }
-
 }
