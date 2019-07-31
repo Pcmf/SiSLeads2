@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  ADDRESS: 'http://localhost/sisleads/Rest2/'
+  ADDRESS: 'http://localhost/SiSLeads2Rest/'
 };
 
 /*

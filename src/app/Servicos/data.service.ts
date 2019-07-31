@@ -25,7 +25,7 @@ export class DataService {
       JSON.stringify(credenciais))
       .pipe(
         map((response: any) => {
-          console.log(response);
+          console.log('Teste ' + response);
           if (response) {
             sessionStorage.setItem('token', response);
             return true;
