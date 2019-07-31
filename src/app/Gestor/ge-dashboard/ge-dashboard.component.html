@@ -5,19 +5,25 @@
         <mat-card class="dash-card mat-elevation-z4">
                 <mat-card-title>&nbsp;</mat-card-title>
                 <mat-card-content>
-                        <div class="leads-novas">
-                                <h4>Novas</h4>
-                                <h1>5</h1>
-                        </div>
-                        <div class="leads-agendadas">
-                                <h4>Agendadas</h4>
-                                <h1>12</h1>
-                        </div>
-                        <div class="leads-puxar pt-5">
+                        <!-- <div class=""> -->
+                                <div class="leads-novas">
+                                        <h4>Novas</h4>
+                                        <h1>{{dashInfo.novas || 0}}</h1>
+                                </div>
+                                <div class="leads-agendadas">
+                                        <h4>Agendadas</h4>
+                                        <h1>{{dashInfo.agendaAtiva || 0}}</h1>
+                                </div>
+                        <!-- </div> -->
+
+                        <div class="leads-puxar pt-5" *ngIf="dashInfo.novas && dashInfo.agendaAtiva">
                                 <span>PUXAR</span>
                                 <mat-icon aria-hidden="false" aria-label="Example keyboard_arrow_right icon">
                                         keyboard_arrow_right
                                 </mat-icon>
+                        </div>
+                        <div class="" *ngIf="!(dashInfo.novas && dashInfo.agendaAtiva)">
+                                <h2 class="mat-h2">Não há Leads</h2>
                         </div>
                 </mat-card-content>
         </mat-card>
@@ -26,10 +32,12 @@
                 <mat-card-title>&nbsp;</mat-card-title>
                 <mat-card-content>
                         <div class="card-block">
-                                <h1 class="display-1">Agendadas: <span class="text-info">29</span></h1>
+                                <h1 class="display-1">Agendadas: <span
+                                                class="text-right text-info">{{dashInfo.agendadas || 0}}</span></h1>
                         </div>
                         <div class="card-block">
-                                <h1 class="display-1">Anuladas: <span class="text-danger">2000</span></h1>
+                                <h1 class="display-1">Anuladas Hoje: <span
+                                                class="text-right text-danger">{{dashInfo.anuladasDia}}</span></h1>
                         </div>
                 </mat-card-content>
         </mat-card>
@@ -38,16 +46,20 @@
                 <mat-card-title>Documentação</mat-card-title>
                 <mat-card-content class="mat-card-content-doc">
                         <div class="card-block-doc">
-                                <span class="">Aguardam: </span><span class="text-right text-info">20</span>
+                                <span class="">Aguardam: </span><span
+                                        class="text-right text-info">{{dashInfo.aguardaDoc}}</span>
                         </div>
                         <div class="card-block-doc">
-                                <span class="">Atrasada: </span><span class="text-right text-info">43</span>
+                                <span class="">Atrasada: </span><span
+                                        class="text-right text-info">{{dashInfo.docAtrasada}}</span>
                         </div>
                         <div class="card-block-doc">
-                                <span class="">Analista: </span><span class="text-right text-info">3</span>
+                                <span class="">Analista: </span><span
+                                        class="text-right text-info">{{dashInfo.docAnalista}}</span>
                         </div>
                         <div class="card-block-doc">
-                                <span class="">Cliente: </span><span class="text-right text-info">20 / 5</span>
+                                <span class="">Cliente: </span><span class="text-right text-info">{{dashInfo.iniPortal}}
+                                        / {{+dashInfo.docPortal + +dashInfo.docBPS}}</span>
                         </div>
 
                 </mat-card-content>

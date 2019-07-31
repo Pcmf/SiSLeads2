@@ -11,7 +11,7 @@
         </mat-form-field>
   
         <mat-form-field class="center-full-width">
-          <input matInput type="password" #pass ngModel placeholder="Senha" name="password" required minlength="4">
+          <input matInput type="password" #pass ngModel placeholder="Senha" name="password" required minlength="3">
         </mat-form-field>
         <mat-error *ngIf="!f.valid && user.touched && pass.touched">
           <small>Campos obrigatórios</small>

@@ -23,6 +23,7 @@
 .dash-card-notifications{
     height: 120px;
     margin-top: 10px;
+    flex: 1 0 600px;
 }
 
 .mat-icon{
@@ -43,8 +44,9 @@ mat-card-content{
 }
 
 .leads-puxar{
-    width: 100px;
+    width: 120px;
     height: 65px;
+    margin-right: 50px;
     padding: 35px 10px 1px 20px;
     border-radius: 8px;
     background-color: green;
