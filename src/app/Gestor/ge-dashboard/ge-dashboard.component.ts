@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import * as CanvasJS from './../../../../node_modules/chartJs/canvasjs.min.js';
+// import * as CanvasJS from './../../../../node_modules/chartJs/canvasjs.min.js';
 import { Router } from '@angular/router';
 
 @Component({
@@ -19,7 +19,7 @@ export class GeDashboardComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit() {
-    const chart = new CanvasJS.Chart('chartContainer', {
+    /* const chart = new CanvasJS.Chart('chartContainer', {
       theme: 'light2',
       animationEnabled: true,
       exportEnabled: true,
@@ -40,7 +40,7 @@ export class GeDashboardComponent implements OnInit {
       }]
     });
 
-    chart.render();
-  }
+    chart.render();*/
+  } 
 
 }
