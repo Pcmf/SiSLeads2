@@ -1,0 +1,26 @@
+<mat-accordion>
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false"  class="msg-out" *ngIf="msgObj.origem==userId">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                {{msgObj.userorigem}}
+            </mat-panel-title>
+            <mat-panel-description>
+                {{msgObj.dataenvio}}
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>{{msgObj.assunto}}</p>
+        <mat-icon></mat-icon>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false"  class="msg-in" *ngIf="msgObj.origem!=userId" (click)="panelOpenState != panelOpenState">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                {{msgObj.userorigem}}
+            </mat-panel-title>
+            <mat-panel-description>
+                {{msgObj.dataenvio}}
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>{{msgObj.assunto}}</p>
+    </mat-expansion-panel>
+</mat-accordion>

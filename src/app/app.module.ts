@@ -19,6 +19,7 @@ import { LoginComponent } from './login/login.component';
 import { DataService } from './Servicos/data.service';
 import { AuthGuardService } from './auth-guard.service';
 import { MenuComponent } from './Gestor/menu/menu.component';
+import { MuralDialogComponent } from './XComuns/mural-dialog/mural-dialog.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { MenuComponent } from './Gestor/menu/menu.component';
     AdmDashboardComponent,
     AnDashboardComponent,
     LoginComponent,
-    MenuComponent
+    MenuComponent,
+    MuralDialogComponent
   ],
   imports: [
     BrowserModule,

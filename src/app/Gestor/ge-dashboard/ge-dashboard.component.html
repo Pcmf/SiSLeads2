@@ -6,14 +6,14 @@
                 <mat-card-title>&nbsp;</mat-card-title>
                 <mat-card-content>
                         <!-- <div class=""> -->
-                                <div class="leads-novas">
-                                        <h4>Novas</h4>
-                                        <h1>{{dashInfo.novas || 0}}</h1>
-                                </div>
-                                <div class="leads-agendadas">
-                                        <h4>Agendadas</h4>
-                                        <h1>{{dashInfo.agendaAtiva || 0}}</h1>
-                                </div>
+                        <div class="leads-novas">
+                                <h4>Novas</h4>
+                                <h1>{{dashInfo.novas || 0}}</h1>
+                        </div>
+                        <div class="leads-agendadas">
+                                <h4>Agendadas</h4>
+                                <h1>{{dashInfo.agendaAtiva || 0}}</h1>
+                        </div>
                         <!-- </div> -->
 
                         <div class="leads-puxar pt-5" *ngIf="dashInfo.novas && dashInfo.agendaAtiva">
@@ -130,6 +130,10 @@
                 <mat-card-title>Mural</mat-card-title>
                 <mat-card-content>
                         <div class="mat-card-content-mural">
+                                <div *ngFor="let msg of muralData" class="d-flex">
+                                        <app-mural-dialog [msgObj]="msg" [userId]="userId"></app-mural-dialog>
+
+                                </div>
 
                         </div>
                         <mat-form-field class="search-full-width">

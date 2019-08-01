@@ -122,3 +122,16 @@ mat-card-content{
       overflow-y: scroll;
       border: 1px darkgray solid;
   }
+  .msg-out{
+      background-color: beige;
+      height: 30px;
+      width: 80%;
+      margin: 4px 0 4px 10%;
+      
+  }
+  .msg-in{
+    background-color: lightgreen;
+    height: 30px;
+    width: 80%;
+    margin: 4px 0px 4px 0px;
+}
