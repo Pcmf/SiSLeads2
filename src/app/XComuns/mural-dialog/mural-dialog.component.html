@@ -13,7 +13,7 @@
         <mat-icon></mat-icon>
     </mat-expansion-panel>
 
-    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" [multi]="false"
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" 
                          class="msg-in" *ngIf="msgObj.origem!=userId" (click)="panelOpenState != panelOpenState">
         <mat-expansion-panel-header>
             <mat-panel-title>

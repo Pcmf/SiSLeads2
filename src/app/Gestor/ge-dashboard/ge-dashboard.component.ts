@@ -62,6 +62,9 @@ export class GeDashboardComponent implements OnInit {
 
   }
 
-
+  // Enviar msg
+  sendMsg(e) {
+    console.log(e);
+  }
 
 }

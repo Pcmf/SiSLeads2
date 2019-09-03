@@ -62,7 +62,10 @@ export class DataService {
       return false;
     }
   }
-
+  getUserName() {
+    const token = sessionStorage.getItem('token');
+    return this.helper.decodeToken(token).nome;
+  }
   getUserId() {
     const token = sessionStorage.getItem('token');
     return this.helper.decodeToken(token).id;
