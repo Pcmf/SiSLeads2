@@ -19,12 +19,7 @@ export class DataService {
   }
   // Insert and update DB
   setData(param, data) {
-    return this.http.put( this.ADDRESS + param, JSON.stringify(data) ).pipe(
-      map(
-        resp => console.log(resp),
-        error => console.log('Erro ' + error )
-        )
-    );
+    return this.http.put( this.ADDRESS + param, JSON.stringify(data) );
   }
   // Delete data form DB
   delete( param, data) {
