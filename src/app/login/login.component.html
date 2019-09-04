@@ -1,6 +1,4 @@
 <div class="container-fluid">
-    <!-- <div class="container"> -->
-      
       <form class="center-form panel" #f="ngForm" (submit)="submit(f.value)">
         <h2 class="mat-h2">SiSLeads</h2>
         <h1 class="mat-display-1" >GESTLIFES</h1>
@@ -11,7 +9,7 @@
         </mat-form-field>
   
         <mat-form-field class="center-full-width">
-          <input matInput type="password" #pass ngModel placeholder="Senha" name="password" required minlength="4">
+          <input matInput type="password" #pass ngModel placeholder="Senha" name="password" required minlength="3">
         </mat-form-field>
         <mat-error *ngIf="!f.valid && user.touched && pass.touched">
           <small>Campos obrigatórios</small>
@@ -21,5 +19,4 @@
         </mat-error>
         <button [disabled]="!f.valid" mat-stroked-button type="submit" color="primary">Entrar</button>
       </form>
-  <!--   </div> -->
   </div>

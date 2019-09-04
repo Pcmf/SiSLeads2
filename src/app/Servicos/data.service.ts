@@ -13,11 +13,23 @@ export class DataService {
   private helper = new JwtHelperService();
 
   constructor(private http: HttpClient) { }
-
+  // Get data from DB
   getData(param) {
     return this.http.get(this.ADDRESS + param);
   }
-
+  // Insert and update DB
+  setData(param, data) {
+    return this.http.put( this.ADDRESS + param, JSON.stringify(data) );
+  }
+  // Delete data form DB
+  delete( param, data) {
+    return this.http.delete( this.ADDRESS + param ).pipe(
+      map(
+        resp => console.log(resp),
+        error => console.log('Erro ' + error)
+        )
+    );
+  }
 
 
   checkUser(credenciais: any) {
@@ -44,6 +56,14 @@ export class DataService {
     } else {
       return false;
     }
+  }
+  getUserName() {
+    const token = sessionStorage.getItem('token');
+    return this.helper.decodeToken(token).nome;
+  }
+  getUserId() {
+    const token = sessionStorage.getItem('token');
+    return this.helper.decodeToken(token).id;
   }
 
   getUserType() {

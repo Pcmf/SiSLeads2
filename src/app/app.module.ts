@@ -1,5 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { ChartsModule, WavesModule } from 'angular-bootstrap-md';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
@@ -16,6 +19,7 @@ import { LoginComponent } from './login/login.component';
 import { DataService } from './Servicos/data.service';
 import { AuthGuardService } from './auth-guard.service';
 import { MenuComponent } from './Gestor/menu/menu.component';
+import { MuralDialogComponent } from './XComuns/mural-dialog/mural-dialog.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +28,8 @@ import { MenuComponent } from './Gestor/menu/menu.component';
     AdmDashboardComponent,
     AnDashboardComponent,
     LoginComponent,
-    MenuComponent
+    MenuComponent,
+    MuralDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +38,10 @@ import { MenuComponent } from './Gestor/menu/menu.component';
     AppRoutingModule,
     MatModulesImports,
     FormsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    ChartsModule,
+    WavesModule,
+    MDBBootstrapModule.forRoot()
   ],
   providers: [DataService, AuthGuardService],
   bootstrap: [AppComponent]

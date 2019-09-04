@@ -7,11 +7,12 @@ import { DataService } from 'src/app/Servicos/data.service';
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent implements OnInit {
-
+  public user = '';
 
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
+    this.user = this.dataService.getUserName();
   }
 
   logout() {

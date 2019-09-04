@@ -3,21 +3,27 @@
 <div class="container">
 
         <mat-card class="dash-card mat-elevation-z4">
-                <mat-card-title>&nbsp;</mat-card-title>
+                <mat-card-title>Puxar Leads</mat-card-title>
                 <mat-card-content>
+                        <!-- <div class=""> -->
                         <div class="leads-novas">
                                 <h4>Novas</h4>
-                                <h1>5</h1>
+                                <h1>{{dashInfo.novas || 0}}</h1>
                         </div>
                         <div class="leads-agendadas">
                                 <h4>Agendadas</h4>
-                                <h1>12</h1>
+                                <h1>{{dashInfo.agendaAtiva || 0}}</h1>
                         </div>
-                        <div class="leads-puxar pt-5">
+                        <!-- </div> -->
+
+                        <div class="leads-puxar pt-5" *ngIf="dashInfo.novas && dashInfo.agendaAtiva">
                                 <span>PUXAR</span>
                                 <mat-icon aria-hidden="false" aria-label="Example keyboard_arrow_right icon">
                                         keyboard_arrow_right
                                 </mat-icon>
+                        </div>
+                        <div class="" *ngIf="!(dashInfo.novas && dashInfo.agendaAtiva)">
+                                <h2 class="mat-h2">Não há Leads</h2>
                         </div>
                 </mat-card-content>
         </mat-card>
@@ -26,10 +32,14 @@
                 <mat-card-title>&nbsp;</mat-card-title>
                 <mat-card-content>
                         <div class="card-block">
-                                <h1 class="display-1">Agendadas: <span class="text-info">29</span></h1>
+                                <h1 class="display-1">Agendadas: 
+                                        <span class="text-right text-info">{{dashInfo.agendadas || 0}}</span>
+                                </h1>
                         </div>
                         <div class="card-block">
-                                <h1 class="display-1">Anuladas: <span class="text-danger">2000</span></h1>
+                                <h1 class="display-1">Anuladas Hoje: 
+                                        <span class="text-right text-danger">{{dashInfo.anuladasDia || 0}}</span>
+                                </h1>
                         </div>
                 </mat-card-content>
         </mat-card>
@@ -38,16 +48,22 @@
                 <mat-card-title>Documentação</mat-card-title>
                 <mat-card-content class="mat-card-content-doc">
                         <div class="card-block-doc">
-                                <span class="">Aguardam: </span><span class="text-right text-info">20</span>
+                                <span class="">Aguardam: </span>
+                                <span class="text-right text-info">{{dashInfo.aguardaDoc}}</span>
                         </div>
                         <div class="card-block-doc">
-                                <span class="">Atrasada: </span><span class="text-right text-info">43</span>
+                                <span class="">Atrasada: </span>
+                                <span class="text-right text-info">{{dashInfo.docAtrasada}}</span>
                         </div>
                         <div class="card-block-doc">
-                                <span class="">Analista: </span><span class="text-right text-info">3</span>
+                                <span class="">Analista: </span>
+                                <span class="text-right text-info">{{dashInfo.docAnalista}}</span>
                         </div>
                         <div class="card-block-doc">
-                                <span class="">Cliente: </span><span class="text-right text-info">20 / 5</span>
+                                <span class="">Cliente: </span>
+                                <span class="text-right text-info">{{dashInfo.iniPortal}}
+                                        / {{+dashInfo.docPortal + +dashInfo.docBPS}}
+                                </span>
                         </div>
 
                 </mat-card-content>
@@ -57,10 +73,12 @@
                 <mat-card-title>Recuperação</mat-card-title>
                 <mat-card-content class="mat-card-content-doc">
                         <div class="card-block-doc">
-                                <span class="">Para Recuperação: </span><span class="text-right text-info">20</span>
+                                <span class="">Para Recuperação: </span>
+                                <span class="text-right text-info">20</span>
                         </div>
                         <div class="card-block-doc">
-                                <span class="">Em Recuperação: </span><span class="text-right text-info">43</span>
+                                <span class="">Em Recuperação: </span>
+                                <span class="text-right text-info">43</span>
                         </div>
                         <div class="leads-recuperar">
                                 <span>Recuperar</span>
@@ -112,21 +130,29 @@
         <mat-card class="dash-card dash-card-mural mat-elevation-z4">
                 <mat-card-title>Mural</mat-card-title>
                 <mat-card-content>
-                        <div class="mat-card-content-mural">
-
+                        <div class="mat-card-content-mural" #scrollMe [scrollTop]="scrollMe.scrollHeight">
+                                <div *ngFor="let msg of muralData" class="d-flex">
+                                        <app-mural-dialog [msgObj]="msg" [userId]="userId"></app-mural-dialog>
+                                </div>
                         </div>
                         <mat-form-field class="search-full-width">
-                                <textarea matInput placeholder="Mensagem"></textarea>
+                                <textarea matInput placeholder="Mensagem" [(ngModel)]="msgToSend"
+                                        name="msgToSend"></textarea>
                         </mat-form-field>
+
+                        <mat-form-field class="search-full-width">
+                                <mat-label>Enviar para</mat-label>
+                                <mat-select [(ngModel)]="selectedMuralUsers" name="users">
+                                        <mat-option value=""></mat-option>
+                                        <mat-option *ngFor="let u of muralUsers" [value]="u.id">
+                                                {{u.nome}}
+                                        </mat-option>
+                                </mat-select>
+
+                        </mat-form-field>
+                        <button *ngIf="selectedMuralUsers" mat-stroked-button color="primary"
+                                (click)="sendMsg()">Enviar</button>
                 </mat-card-content>
-                <mat-form-field class="">
-                        <mat-label>Enviar para</mat-label>
-                        <mat-select>
-                                <mat-option *ngFor="let u of muralUsers" [value]="u.id">
-                                        {{u.nome}}
-                                </mat-option>
-                        </mat-select>
-                </mat-form-field>
         </mat-card>
 
 
