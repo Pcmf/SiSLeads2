@@ -5,23 +5,20 @@
         <mat-card class="dash-card mat-elevation-z4">
                 <mat-card-title>Puxar Leads</mat-card-title>
                 <mat-card-content>
-                        <!-- <div class=""> -->
-                        <div class="leads-novas">
+                        <div class="leads-label">
                                 <h4>Novas</h4>
                                 <h1>{{dashInfo.novas || 0}}</h1>
                         </div>
-                        <div class="leads-agendadas">
+                        <div class="leads-label">
                                 <h4>Agendadas</h4>
                                 <h1>{{dashInfo.agendaAtiva || 0}}</h1>
                         </div>
-                        <!-- </div> -->
-
-                        <div class="leads-puxar pt-5" *ngIf="dashInfo.novas && dashInfo.agendaAtiva">
+                        <button mat-raised-button class="leads-puxar leads-puxar-novas" *ngIf="dashInfo.novas && dashInfo.agendaAtiva">
                                 <span>PUXAR</span>
                                 <mat-icon aria-hidden="false" aria-label="Example keyboard_arrow_right icon">
                                         keyboard_arrow_right
                                 </mat-icon>
-                        </div>
+                        </button>
                         <div class="" *ngIf="!(dashInfo.novas && dashInfo.agendaAtiva)">
                                 <h2 class="mat-h2">Não há Leads</h2>
                         </div>
@@ -32,12 +29,12 @@
                 <mat-card-title>&nbsp;</mat-card-title>
                 <mat-card-content>
                         <div class="card-block">
-                                <h1 class="display-1">Agendadas: 
+                                <h1 class="display-1">Agendadas:
                                         <span class="text-right text-info">{{dashInfo.agendadas || 0}}</span>
                                 </h1>
                         </div>
                         <div class="card-block">
-                                <h1 class="display-1">Anuladas Hoje: 
+                                <h1 class="display-1">Anuladas Hoje:
                                         <span class="text-right text-danger">{{dashInfo.anuladasDia || 0}}</span>
                                 </h1>
                         </div>
@@ -71,33 +68,35 @@
 
         <mat-card class="dash-card mat-elevation-z4">
                 <mat-card-title>Recuperação</mat-card-title>
-                <mat-card-content class="mat-card-content-doc">
-                        <div class="card-block-doc">
-                                <span class="">Para Recuperação: </span>
-                                <span class="text-right text-info">20</span>
+                <mat-card-content>
+                        <div class="leads-label">
+                                <h4>Para Recuperar</h4>
+                                <h1>3211</h1>
                         </div>
-                        <div class="card-block-doc">
-                                <span class="">Em Recuperação: </span>
-                                <span class="text-right text-info">43</span>
+                        <div class="leads-label">
+                                <h4>Em Recuperação</h4>
+                                <h1>34</h1>
                         </div>
-                        <div class="leads-recuperar">
-                                <span>Recuperar</span>
+                        <button  mat-raised-button class="leads-puxar leads-puxar-recuperacao ">
+                                <span>RECUPERAR</span>
                                 <mat-icon aria-hidden="false" aria-label="Example keyboard_arrow_right icon">
                                         keyboard_arrow_right
                                 </mat-icon>
-                        </div>
+                        </button> 
                 </mat-card-content>
         </mat-card>
+
+        <!-- SITUAÇÃO -->
         <div class="dash-div">
                 <mat-card class="dash-card mat-elevation-z4">
                         <mat-card-title>Situação</mat-card-title>
                         <mat-card-content class="mat-card-content-doc">
 
                                 <div style="display: block">
-                                        <canvas mdbChart [chartType]="chartType" [datasets]="chartDatasets"
-                                                [labels]="chartLabels" [colors]="chartColors" [options]="chartOptions"
-                                                [legend]="true" (chartHover)="chartHovered($event)"
-                                                (chartClick)="chartClicked($event)">
+                                        <canvas baseChart 
+                                                [data]="pieChartData"
+                                                [labels]="pieChartLabels"
+                                                [chartType]="pieChartType">
                                         </canvas>
                                 </div>
 

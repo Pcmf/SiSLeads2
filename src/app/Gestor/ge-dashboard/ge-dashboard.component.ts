@@ -27,13 +27,17 @@ export class GeDashboardComponent implements OnInit {
   // Timer 1 minuto
   private timer: Observable<number> = timer(0, 60000);
 
+    // CHART TEST
+    public pieChartLabels = ['Puxadas', 'Analise', 'Aprovadas', 'Financiadas'];
+    public pieChartData = [1, 1, 1, 1];
+    public pieChartType = 'pie';
+
   constructor(private router: Router, private data: DataService) {
 
     this.userId = this.data.getUserId();
     // Utilizadores do mural
     this.data.getData('mural').subscribe(
       (resp: any) => {
-        console.log(resp);
         this.muralUsers = resp;
       },
       error => console.log('Erro ' + error.error)
@@ -44,8 +48,21 @@ export class GeDashboardComponent implements OnInit {
         // Informação para o dashboard
         this.data.getData('dashinfo/' + this.data.getUserId()).subscribe(
           (resp: any) => {
-            console.log(resp);
             this.dashInfo = resp;
+            // tslint:disable-next-line: max-line-length
+            this.pieChartLabels = [
+                                  'Puxadas ' + this.dashInfo.puxadosMes,
+                                  'Analise ' + this.dashInfo.toAnaliseMes,
+                                  'Aprovadas ' + this.dashInfo.aprovadosMes,
+                                  'Financiadas ' + this.dashInfo.financiadosMes
+                                ];
+            this.pieChartData = [
+                                    this.dashInfo.puxadosMes,
+                                    this.dashInfo.toAnaliseMes,
+                                    this.dashInfo.aprovadosMes,
+                                    this.dashInfo.financiadosMes
+                                ];
+            this.pieChartType = 'pie';
           },
           error => console.log('Erro ' + error.error)
         );
@@ -54,6 +71,8 @@ export class GeDashboardComponent implements OnInit {
     );
 
   }
+
+
 
   ngOnInit() {
 
@@ -81,14 +100,13 @@ export class GeDashboardComponent implements OnInit {
   }
 
   private mural() {
-  // Informação do mural
-  this.data.getData('mural/' + this.data.getUserId()).subscribe(
-    (resp: any) => {
-      console.log(resp);
-      this.muralData = resp;
-    },
-    error => console.log('Erro ' + error.error)
-  );
-}
+    // Informação do mural
+    this.data.getData('mural/' + this.data.getUserId()).subscribe(
+      (resp: any) => {
+        this.muralData = resp;
+      },
+      error => console.log('Erro ' + error.error)
+    );
+  }
 
 }
