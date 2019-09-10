@@ -1,0 +1,89 @@
+<app-menu></app-menu>
+
+<div class="container mt-5">
+    <div class="header">
+        <mat-card class="card-dados-lead">
+            <mat-card-title class="card-space-between">
+                <span>Lead: {{lead.id}}</span>
+                <span>Tipo: {{lead.tipo}}</span>
+                <span>{{lead.statusnome}}</span>
+            </mat-card-title>
+            <mat-card-content class="card-space-between">
+                <mat-form-field>
+                    <input matInput placeholder="Data entrada" [ngModel]="lead.dataentrada" readonly>
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="Fornecedor" [ngModel]="lead.nomeFornecedor" readonly>
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="Origem" [ngModel]="lead.nomelead" readonly>
+                </mat-form-field>
+            </mat-card-content>
+        </mat-card>
+
+        <div class="call-buttons">
+            <button mat-flat-button color="primary" *ngIf="!onCall" (click)="makeCall()">Ligar <mat-icon>call</mat-icon>
+                </button>
+            <button mat-stroked-button color="warn" *ngIf="onCall" (click)="endCall(1)">Desligar <i
+                    class="material-icons">call_end</i></button>
+            <button mat-flat-button color="warn" *ngIf="onCall" (click)="endCall(2)">Desligado\Não Atende <i
+                    class="material-icons">phone_enabled</i></button>
+            <button mat-flat-button color="accent" *ngIf="onCall" (click)="endCall(3)">Não Atribuido <i
+                    class="material-icons">phone_disabled</i></button>
+            <button mat-stroked-button color="primary" (click)="agendar()">Agendar <i
+                    class="material-icons">event_note</i></button>
+        </div>
+    </div>
+
+    <!-- FORMULARIO DE CONTACTO -->
+    <div class="main">
+        <div class="line">
+            <mat-form-field class="input-lg">
+                <input matInput placeholder="Nome" [ngModel]="lead.nome" required>
+            </mat-form-field>
+            <mat-form-field class="input-sm">
+                <input matInput type="number" placeholder="Idade" [ngModel]="lead.idade" required min="18">
+            </mat-form-field>
+            <mat-form-field class="input-md">
+                <input matInput type="number" placeholder="Telefone" [ngModel]="lead.telefone" minlength="9" required>
+            </mat-form-field>
+            <mat-form-field class="input-lg">
+                <input matInput type="email" placeholder="Email" [ngModel]="lead.email">
+            </mat-form-field>
+            <mat-form-field class="input-md">
+                <input matInput type="number" placeholder="NIF" [ngModel]="lead.nif">
+            </mat-form-field>
+        </div>
+        <div class="line">
+            <mat-form-field class="input-md">
+                    <mat-label>Sector</mat-label>
+                    <mat-select [ngModel]="lead.profissao" >
+                            <mat-option value="privado">Privado</mat-option>
+                            <mat-option value="publico">Publico</mat-option>
+                    </mat-select>
+            </mat-form-field>
+            <mat-form-field class="input-md">
+                    <mat-label>Tipo de contrato</mat-label>
+                    <mat-select [ngModel]="lead.tipocontrato">
+                      <mat-option *ngFor="let sit of sitprofissional" [value]="sit.id">
+                        {{sit.nome}}
+                      </mat-option>
+                    </mat-select>
+            </mat-form-field>
+            <mat-form-field class="input-md">
+                <input matInput type="number" placeholder="Vencimento" [ngModel]="lead.vencimento || lead.rendimento1" required>
+            </mat-form-field>
+            <mat-form-field class="input-md">
+                <input matInput type="number" placeholder="Ano Inicio" [ngModel]="lead.desdeano">
+            </mat-form-field>
+            <mat-form-field class="input-md">
+                <mat-label>Mês Inicio</mat-label>
+                <mat-select [ngModel]="lead.desdemes">
+                    <mat-option *ngFor="let mes of meses" [value]="mes.id">
+                        {{mes.nome}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+</div>

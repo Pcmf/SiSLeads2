@@ -1,0 +1,48 @@
+.header{
+    width: 90%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-dados-lead{
+    width: 50%;
+    margin-top:20px;
+}
+.card-space-between{
+    display: flex;
+    justify-content: space-between;
+}
+
+.call-buttons{
+    margin-top: 15px;
+}
+.call-buttons button{
+    margin: 5px
+}
+
+/* Formulario principal */
+.main{
+    margin: auto;
+    margin-top: 20px;
+    width: 85%;
+    border: 1px gray solid;
+    padding: 20px;
+    border-radius: 10px;
+    
+}
+.line{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.input-sm{
+    width: 50px;
+}
+.input-md{
+    width: 150px;
+}
+.input-lg{
+    width: 300px;
+}

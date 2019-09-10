@@ -13,7 +13,9 @@
                                 <h4>Agendadas</h4>
                                 <h1>{{dashInfo.agendaAtiva || 0}}</h1>
                         </div>
-                        <button mat-raised-button class="leads-puxar leads-puxar-novas" *ngIf="dashInfo.novas && dashInfo.agendaAtiva">
+                        <button mat-raised-button class="leads-puxar leads-puxar-novas" 
+                                *ngIf="dashInfo.novas && dashInfo.agendaAtiva"
+                                routerLink="puxar/">
                                 <span>PUXAR</span>
                                 <mat-icon aria-hidden="false" aria-label="Example keyboard_arrow_right icon">
                                         keyboard_arrow_right

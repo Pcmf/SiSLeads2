@@ -5,7 +5,7 @@ import { WavesModule } from 'angular-bootstrap-md';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ChartsModule } from 'ng2-charts';
 
@@ -21,6 +21,7 @@ import { DataService } from './Servicos/data.service';
 import { AuthGuardService } from './auth-guard.service';
 import { MenuComponent } from './Gestor/menu/menu.component';
 import { MuralDialogComponent } from './XComuns/mural-dialog/mural-dialog.component';
+import { FormContactoComponent } from './Gestor/form-contacto/form-contacto.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { MuralDialogComponent } from './XComuns/mural-dialog/mural-dialog.compon
     AnDashboardComponent,
     LoginComponent,
     MenuComponent,
-    MuralDialogComponent
+    MuralDialogComponent,
+    FormContactoComponent
   ],
   imports: [
     BrowserModule,
@@ -38,6 +40,7 @@ import { MuralDialogComponent } from './XComuns/mural-dialog/mural-dialog.compon
     HttpClientModule,
     AppRoutingModule,
     MatModulesImports,
+    ReactiveFormsModule,
     FormsModule,
     FlexLayoutModule,
     ChartsModule,
