@@ -1,5 +1,5 @@
 import { ILead } from './ILead';
-import { stat } from 'fs';
+
 export class Lead implements ILead {
     id: number;
     fornecedor: number;
@@ -20,9 +20,12 @@ export class Lead implements ILead {
     user: number;
     analista: number;
 
-    constructor(id, fornecedor, tipo, nome, email, telefone, idade, nif, montante,
-                prazopretendido, rendimento1, tipocontrato, info, dataentrada, status,
-                datastatus, user, analista) {
+    contructor() {}
+
+    constructor(id: number, fornecedor: number, tipo: string, nome: string, email: string, telefone: string, idade: number,
+                nif: number, montante: number,
+                prazopretendido: number, rendimento1: number, tipocontrato: number, info: string, dataentrada: string, status: number,
+                datastatus: string, user: number, analista: number) {
 
             this.id = id;
             this.fornecedor = fornecedor;

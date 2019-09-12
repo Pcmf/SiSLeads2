@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { Subscription } from 'rxjs';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Lead } from '../../XComuns/lead';
 
 import meses from '../../../assets/jsons/meses.json';
 
@@ -15,7 +16,7 @@ import meses from '../../../assets/jsons/meses.json';
 export class FormContactoComponent implements OnInit, OnDestroy {
 
   public onCall = false;
-  public lead = [];
+  public lead: Lead ;
   public historico = [];
   public sitprofissional = [];
   public meses = meses;
@@ -42,7 +43,7 @@ export class FormContactoComponent implements OnInit, OnDestroy {
         // Puxar uma lead
         this.data.getData('puxar/' + this.data.getUserId()).subscribe(
           (resp: any) => {
-            console.log(this.lead = resp.lead);
+            this.lead = resp.lead;
             this.historico = resp.historico;
             this.createForm();
           }
@@ -59,7 +60,13 @@ export class FormContactoComponent implements OnInit, OnDestroy {
       nome: [this.lead.nome, [Validators.required]],
       idade: [this.lead.idade, [Validators.required]],
       telefone: [this.lead.telefone, [Validators.required]],
-      email: [this.lead.email, [Validators.required]]
+      email: [this.lead.email, [Validators.required]],
+      nif: [this.lead.nif, [Validators.required]],
+      profissao: ['', [Validators.required]],
+      tipocontrato: ['', [Validators.required]],
+      vencimento: [this.lead.rendimento1, [Validators.required]],
+      desdeano: ['', [Validators.required]],
+      desdemes: ['', [Validators.required]]
     });
   }
 
