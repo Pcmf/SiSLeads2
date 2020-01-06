@@ -8,8 +8,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  erro: boolean;
 
-  constructor(private dataService: DataService, private router: Router) { }
+  constructor(private dataService: DataService, private router: Router) {
+    this.erro = false;
+   }
 
   submit(form) {
     this.dataService.checkUser(form).subscribe(
@@ -30,7 +33,10 @@ export class LoginComponent implements OnInit {
               this.router.navigate(['/']);
               break;
           }
+        } else {
+          this.erro = true;
         }
+
       }
     );
 

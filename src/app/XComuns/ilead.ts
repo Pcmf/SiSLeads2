@@ -1,5 +1,7 @@
 export interface ILead {
     id: number;
+    idleadorig: string;
+    nomelead: string;
     fornecedor: number;
     tipo: string;
     nome: string;

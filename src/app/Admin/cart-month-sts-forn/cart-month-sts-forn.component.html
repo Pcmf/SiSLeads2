@@ -1,0 +1,59 @@
+<mat-card>
+    <mat-card-subtitle>
+            <mat-form-field style="width: 130px;">
+                    <mat-label>Status</mat-label>
+                    <mat-select [(value)]="status" (selectionChange)="getData()">
+                        <mat-option value="Recebidos">Recebidos</mat-option>
+                        <mat-option value="Anulados">Anulados</mat-option>
+                        <mat-option value="Financiados">Financiados</mat-option>
+                        <mat-option value="Recusados">Recusados</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            <mat-form-field style="width: 70px;">
+                <mat-label>Ano</mat-label>
+                <mat-select [(value)]="ano" (selectionChange)="getData()">
+                    <mat-option value="2018">2018</mat-option>
+                    <mat-option value="2019">2019</mat-option>
+                    <mat-option value="2020">2020</mat-option>
+                    <mat-option value="2021">2021</mat-option>
+                    <mat-option value="2022">2022</mat-option>
+                    <mat-option value="2023">2023</mat-option>
+                    <mat-option value="2024">2024</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field style="width: 70px;">
+                <mat-label>Mês</mat-label>
+                <mat-select [(value)]="mes" (selectionChange)="getData()">
+                    <mat-option value="1">JAN</mat-option>
+                    <mat-option value="2">FEV</mat-option>
+                    <mat-option value="3">MAR</mat-option>
+                    <mat-option value="4">ABR</mat-option>
+                    <mat-option value="5">MAI</mat-option>
+                    <mat-option value="6">JUN</mat-option>
+                    <mat-option value="7">JUL</mat-option>
+                    <mat-option value="8">AGO</mat-option>
+                    <mat-option value="9">SET</mat-option>
+                    <mat-option value="10">OUT</mat-option>
+                    <mat-option value="11">NOV</mat-option>
+                    <mat-option value="12">DEZ</mat-option>
+                </mat-select>
+            </mat-form-field>
+    </mat-card-subtitle>
+    <mat-card-content>
+            <div class="chart">
+                    <canvas baseChart 
+                        [data]="pieChartData" 
+                        [labels]="pieChartLabels" 
+                        [chartType]="pieChartType"
+                        [options]="pieChartOptions" 
+                        [plugins]="pieChartPlugins" 
+                        [colors]="pieChartColors" 
+                        [legend]="pieChartLegend">
+                    </canvas>
+                </div>
+    </mat-card-content>
+</mat-card>
+
+
+
+

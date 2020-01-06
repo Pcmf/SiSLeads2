@@ -2,6 +2,8 @@ import { ILead } from './ILead';
 
 export class Lead implements ILead {
     id: number;
+    idleadorig: string;
+    nomelead: string;
     fornecedor: number;
     tipo: string;
     nome: string;
@@ -22,12 +24,14 @@ export class Lead implements ILead {
 
     contructor() {}
 
-    constructor(id: number, fornecedor: number, tipo: string, nome: string, email: string, telefone: string, idade: number,
-                nif: number, montante: number,
+    constructor(id: number, idleadorig: string, nomelead: string, fornecedor: number, tipo: string, nome: string, email: string,
+                telefone: string, idade: number, nif: number, montante: number,
                 prazopretendido: number, rendimento1: number, tipocontrato: number, info: string, dataentrada: string, status: number,
                 datastatus: string, user: number, analista: number) {
 
             this.id = id;
+            this.idleadorig = idleadorig;
+            this.nomelead = nomelead;
             this.fornecedor = fornecedor;
             this.tipo = tipo;
             this.nome = nome;

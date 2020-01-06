@@ -8,10 +8,13 @@ import { DataService } from 'src/app/Servicos/data.service';
 })
 export class MenuComponent implements OnInit {
   public user = '';
+  public type: string;
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService) {
+   }
 
   ngOnInit() {
+   // this.type = this.dataService.getUserType();
     this.user = this.dataService.getUserName();
   }
 
