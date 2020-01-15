@@ -76,7 +76,7 @@ export class DataService {
 
   logout() {
     sessionStorage.clear();
-    window.location.reload();
+    window.location.replace('/');
   }
 
 }

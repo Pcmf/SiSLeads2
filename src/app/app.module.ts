@@ -19,7 +19,7 @@ import { AnDashboardComponent } from './Analista/an-dashboard/an-dashboard.compo
 import { LoginComponent } from './login/login.component';
 import { DataService } from './Servicos/data.service';
 import { AuthGuardService } from './auth-guard.service';
-import { MenuComponent } from './menu/menu.component';
+import { MenuComponent } from './Gestor/menu/menu.component';
 import { MenuAdmComponent } from './Admin/menu/menu-adm.component';
 import { MuralDialogComponent } from './XComuns/mural-dialog/mural-dialog.component';
 import { FormContactoComponent } from './Gestor/form-contacto/form-contacto.component';
@@ -29,6 +29,8 @@ import { ChartMonthFornComponent } from './Admin/chart-month-forn/chart-month-fo
 import { CartMonthStsFornComponent } from './Admin/cart-month-sts-forn/cart-month-sts-forn.component';
 import { CartActualStsComponent } from './Admin/cart-actual-sts/cart-actual-sts.component';
 import { SimulaComponent } from './Servicos/simula/simula.component';
+import { DocContactoComponent } from './Gestor/doc-contacto/doc-contacto.component';
+import { MenuAnalistaComponent } from './Analista/menu-analista/menu-analista.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,9 @@ import { SimulaComponent } from './Servicos/simula/simula.component';
     ChartMonthFornComponent,
     CartMonthStsFornComponent,
     CartActualStsComponent,
-    SimulaComponent
+    SimulaComponent,
+    DocContactoComponent,
+    MenuAnalistaComponent
   ],
   imports: [
     BrowserModule,

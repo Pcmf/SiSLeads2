@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { MenuService } from './Servicos/menu.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'SiSLeads2';
+  menu: string;
+  subscription: Subscription;
+
+  constructor(private menuService: MenuService) {
+    this.subscription = this.menuService.getMenu().subscribe(
+      resp => this.menu = resp
+    );
+  }
 }

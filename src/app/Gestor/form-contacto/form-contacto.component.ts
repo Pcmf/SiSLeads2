@@ -16,7 +16,7 @@ import meses from '../../../assets/jsons/meses.json';
 export class FormContactoComponent implements OnInit, OnDestroy {
 
   public onCall = false;
-  public lead: Lead ;
+  public lead: any ;
   public historico = [];
   public tiposcontrato = [];
   public estadoscivis = [];
@@ -29,7 +29,7 @@ export class FormContactoComponent implements OnInit, OnDestroy {
   public contactForm: FormGroup;
 
 
-  constructor(private data: DataService, private location: Location, private fb: FormBuilder) {
+  constructor(private data: DataService, private location: Location, private fb: FormBuilder, private route: Router) {
 
     // Obter sitprofissional
     this.data.getData('generic/' + 'cnf_sitprofissional').subscribe(
@@ -51,7 +51,7 @@ export class FormContactoComponent implements OnInit, OnDestroy {
         );
 
     // Puxar uma lead
-    this.data.getData('puxar/' + this.data.getUserId()).subscribe(
+    this.data.getData('lead/puxar/' + this.data.getUserId()).subscribe(
           (resp: any) => {
             this.lead = resp.lead;
             this.historico = resp.historico;
@@ -101,28 +101,6 @@ export class FormContactoComponent implements OnInit, OnDestroy {
 
   }
 
-  /* private createForm() {
-    this.contactForm = this.fb.group({
-      nome: [this.lead.nome, [Validators.required]],
-      idade: [this.lead.idade, [Validators.required, Validators.min==18]],
-      telefone: [this.lead.telefone, [Validators.required]],
-      email: [this.lead.email, [Validators.required]],
-      nif: [this.lead.nif, [Validators.required]],
-      profissao: ['', [Validators.required]],
-      tipocontrato: ['', [Validators.required]],
-      vencimento: [this.lead.rendimento1, [Validators.required]],
-      desdeano: ['', [Validators.required]],
-      desdemes: ['', [Validators.required]],
-      or: [],
-      oc: [],
-      valorpretendido: [this.lead.montante, [Validators.required]],
-      tipo: [this.lead.tipo, [Validators.required]],
-      prazopretendido: [this.lead.prazopretendido, [Validators.required]],
-      prestacaopretendida: [],
-      diapagamento: [],
-      info: [this.lead.info]
-    });
-  } */
 
   makeCall() {
     this.onCall = true;
@@ -132,4 +110,28 @@ export class FormContactoComponent implements OnInit, OnDestroy {
   endCall(tipo) {
     this.onCall = false;
   }
+
+  nextStep(form) {
+
+    console.log(form.value);
+    console.log(this.oc);
+    console.log(this.or);
+    // Guardar os dados do formulário - cria processo - só passa para o passo seguinte se tudo for guardado com sucesso
+/*     this.data.setData('lead/docs/' + this.lead.id, this.lead).subscribe(
+      resp => {
+        console.log(resp);
+        if (resp == null) {
+          alert(resp);
+          this.route.navigate(['/gestor/docs']);
+        }
+      }
+    ); */
+
+
+  }
+
+  rejectLead() {
+    console.log('Rejeitar');
+  }
+
 }

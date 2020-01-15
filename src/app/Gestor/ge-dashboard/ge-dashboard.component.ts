@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import { Subscription, Observable, timer } from 'rxjs';
+import { Subscription,  Observable, timer } from 'rxjs';
 
 import { DataService } from 'src/app/Servicos/data.service';
 
@@ -9,7 +9,8 @@ import { DataService } from 'src/app/Servicos/data.service';
   templateUrl: './ge-dashboard.component.html',
   styleUrls: ['./ge-dashboard.component.scss']
 })
-export class GeDashboardComponent implements OnInit {
+export class GeDashboardComponent implements OnInit, OnDestroy {
+
   // Options for search
   public ops = ['Lead', 'Processo', 'Nome do cliente', 'Email', 'Telefone', 'NIF do cliente', 'Lead original', 'Parceiro'];
   // User
@@ -77,7 +78,8 @@ export class GeDashboardComponent implements OnInit {
   ngOnInit() {
 
   }
-
+  ngOnDestroy(): void {
+  }
   // Enviar msg
   sendMsg() {
     console.log('Users ' + this.selectedMuralUsers + ' Msg ' + this.msgToSend);
