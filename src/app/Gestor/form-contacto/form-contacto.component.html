@@ -1,0 +1,280 @@
+<!-- Simulador da Cetelem-->
+<app-simula></app-simula>
+
+<div class="container">
+    
+        <div class="header">
+            <mat-card class="card-dados-lead">
+                <mat-card-title class="card-space-between">
+                    <span>Lead: {{lead.id}}</span>
+                    <span>Tipo: {{lead.tipo}}</span>
+                    <span>{{lead.statusnome}}</span>
+                </mat-card-title>
+                <mat-card-content class="card-space-between">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Data de Entrada</mat-label>
+                        <input class="form-control" matInput placeholder="Data entrada" name="dataEntrada"
+                            [ngModel]="lead.dataentrada" readonly>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Fornecedor</mat-label>
+                        <input matInput placeholder="Fornecedor" name="fornecedor" [ngModel]="lead.nomeFornecedor"
+                            readonly>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Origem</mat-label>
+                        <input matInput placeholder="Origem" name="nomeLead" [ngModel]="lead.nomelead" readonly>
+                    </mat-form-field>
+                </mat-card-content>
+            </mat-card>
+
+            <div class="call-buttons card-space-between">
+                <button mat-flat-button color="primary" *ngIf="!onCall" (click)="makeCall()">
+                    Ligar <mat-icon>call</mat-icon>
+                </button>
+
+                <button mat-stroked-button color="warn" *ngIf="onCall" class="onCall" (click)="endCall(1)">
+                    Desligar <i class="material-icons">call_end</i>
+                </button>
+                <button mat-flat-button color="warn" *ngIf="onCall" class="onCall" (click)="endCall(2)">
+                    Desligado\Não Atende <i class="material-icons">phone_enabled</i>
+                </button>
+                <button mat-flat-button color="accent" *ngIf="onCall" class="onCall" (click)="endCall(3)">
+                    Não Atribuido <i class="material-icons">phone_disabled</i>
+                </button>
+                <button mat-stroked-button color="primary">
+                    Agendar
+                    <!--(click)="agendar()"-->
+                    <i class="material-icons">event_note</i>
+                </button>
+
+            </div>
+        </div>
+
+        <!-- FORMULARIO DE CONTACTO -->
+        <!-- <div class="main"> -->
+    <form #f="ngForm">        
+        <mat-card class="form-main">
+            <div class="form-row">
+                <mat-form-field class="input-lg">
+                    <input matInput placeholder="Nome" name="nome" [ngModel]="lead.nome" required>
+                </mat-form-field>
+                <mat-form-field class="input-sm">
+                    <input matInput type="number" name="idade" placeholder="Idade" [ngModel]="lead.idade" required
+                        min="18">
+                </mat-form-field>
+                <mat-form-field class="input-md">
+                    <input matInput type="number" name="telefone" placeholder="Telefone" [ngModel]="lead.telefone"
+                        minlength="9" required>
+                </mat-form-field>
+                <mat-form-field class="input-lg">
+                    <input matInput type="email" name="email" placeholder="Email" [ngModel]="lead.email">
+                </mat-form-field>
+                <mat-form-field class="input-md">
+                    <input matInput type="number" name="nif" placeholder="NIF" [ngModel]="lead.nif">
+                </mat-form-field>
+            </div>
+
+            <!-- Situação civil  -->
+            <div class="form-row">
+                <mat-form-field class="input-md">
+                    <mat-label>Estado Civil</mat-label>
+                    <mat-select name="estadocivil" [ngModel]="lead.estadocivil">
+                        <mat-option *ngFor="let sit of estadoscivis" [value]="sit.id">
+                            {{sit.nome}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="input-md">
+                    <mat-label>IRS</mat-label>
+                    <mat-select name="irs" [ngModel]="lead.irs">
+                        <mat-option value="Sim">Sim</mat-option>
+                        <mat-option value="Sim junto">Sim, junto</mat-option>
+                        <mat-option value="Sim separado">Sim, separado</mat-option>
+                        <mat-option value="Nao">Não</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="input-sm">
+                    <input matInput type="number" placeholder="Filhos" name="filhos" [ngModel]="lead.filhos">
+                </mat-form-field>
+                <!-- </div> -->
+                <!-- Habitação -->
+                <!-- <div class=""> -->
+                <mat-form-field class="input-md">
+                    <mat-label>Habitação</mat-label>
+                    <mat-select #thab name="tipohabitacao" [ngModel]="lead.tipohabitacao">
+                        <mat-option *ngFor="let h of tiposhabitacao" [value]="h.id">
+                            {{h.nome}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="input-sm">
+                    <input matInput type="number" placeholder="Desde" name="anohabitacao" [ngModel]="lead.anohabitacao">
+                </mat-form-field>
+                <mat-form-field class="input-md" *ngIf="thab.value==1 || thab.value==3">
+                    <input matInput type="number" placeholder="Renda/Prestação" name="valorhabitacao"
+                        [ngModel]="lead.valorhabitacao">
+                </mat-form-field>
+            </div>
+
+            <!-- Situação profissional -->
+            <div class="">
+                <mat-form-field class="input-md">
+                    <mat-label>Sector</mat-label>
+                    <mat-select name="profissao" [ngModel]="lead.profissao">
+                        <mat-option value="privado">Privado</mat-option>
+                        <mat-option value="publico">Publico</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="input-md">
+                    <mat-label>Tipo de contrato</mat-label>
+                    <mat-select name="tipocontrato" [ngModel]="lead.tipocontrato">
+                        <mat-option *ngFor="let tc of tiposcontrato" [value]="tc.id">
+                            {{tc.nome}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="input-md">
+                    <input matInput type="number" placeholder="Vencimento" name="vencimento"
+                        [ngModel]="lead.vencimento || lead.rendimento1" required>
+                </mat-form-field>
+                <mat-form-field class="input-md">
+                    <input matInput type="number" placeholder="Ano Inicio" name="desdeano" [ngModel]="lead.desdeano">
+                </mat-form-field>
+                <mat-form-field class="input-md">
+                    <mat-label>Mês Inicio</mat-label>
+                    <mat-select name="desdemes" [ngModel]="lead.desdemes">
+                        <mat-option *ngFor="let mes of meses" [value]="mes.id">
+                            {{mes.nome}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <!-- Outros Rendimentos -->
+            <div *ngFor="let ln of or; let i = index;let last = last">
+                <mat-form-field class="input-lg">
+                    <input matInput type="text" placeholder="Outros Rendimentos" name="tiporendimento{{i}}"
+                        [(ngModel)]="ln.tiporendimento">
+                </mat-form-field>
+                <mat-form-field class="input-md">
+                    <input matInput type="number" placeholder="Valor" name="valorrendimento{{i}}"
+                        [(ngModel)]="ln.valorrendimento">
+                </mat-form-field>
+                <mat-form-field class="input-md">
+                    <mat-label>Periocidade</mat-label>
+                    <mat-select name="periocidade{{i}}" [(ngModel)]="ln.periocidade">
+                        <mat-option value="Mes">
+                            Mensal
+                        </mat-option>
+                        <mat-option value="Ano">
+                            Anual
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <button mat-icon-button *ngIf="last" color="warn" (click)="removeLineOR(ln)" title="Remover linha">
+                    <mat-icon>remove_circle</mat-icon>
+                </button>
+                <button mat-icon-button *ngIf="last" color="primary" (click)="addLineOR()" title="Adicionar linha">
+                    <mat-icon>add_circle</mat-icon>
+                </button>
+            </div>
+
+            <!-- Outros Creditos -->
+            <div *ngFor="let ln of oc; let i = index; let last = last">
+                <mat-form-field class="input-lg">
+                    <input matInput type="text" placeholder="Outros Créditos" name="tipocredito{{i}}"
+                        [(ngModel)]="ln.tipocredito">
+                </mat-form-field>
+                <mat-form-field class="input-md">
+                    <input matInput type="number" placeholder="Valor" name="valorcredito{{i}}"
+                        [(ngModel)]="ln.valorcredito">
+                </mat-form-field>
+                <mat-form-field class="input-md">
+                    <input matInput type="number" placeholder="Prestação" name="prestacao{{i}}"
+                        [(ngModel)]="ln.prestacao">
+                </mat-form-field>
+                <mat-form-field class="input-md">
+                    <mat-label>Liquidar</mat-label>
+                    <mat-select name=liquidar{{i}} [(ngModel)]="ln.liquidar">
+                        <mat-option value="0">
+                            Não
+                        </mat-option>
+                        <mat-option value="1">
+                            Sim
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <button mat-icon-button *ngIf="last" color="warn" (click)="removeLineOC(ln)" title="Remover linha">
+                    <mat-icon>remove_circle</mat-icon>
+                </button>
+                <button mat-icon-button *ngIf="last" color="primary" (click)="addLineOC()" title="Adicionar linha">
+                    <mat-icon>add_circle</mat-icon>
+                </button>
+            </div>
+
+            <!-- Dados do credito pretendido -->
+            <div>
+                <mat-form-field class="input-md">
+                    <input matInput type="number" placeholder="Valor Pretendido" name="valorpretendido"
+                        [ngModel]="lead.valorpretendido">
+                </mat-form-field>
+                <mat-form-field class="input-md">
+                    <mat-label>Tipo de Crédito</mat-label>
+                    <mat-select [ngModel]="lead.tipo" name="tipocredito">
+                        <mat-option value="CP">
+                            Pessoal
+                        </mat-option>
+                        <mat-option value="CC">
+                            Consolidado
+                        </mat-option>
+                        <mat-option value="CT">
+                            Cartão de crédito
+                        </mat-option>
+                        <mat-option value="AU">
+                            Auto
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="input-sm">
+                    <input matInput type="number" placeholder="Prazo" name="prazo" [ngModel]="lead.prazopretendido">
+                </mat-form-field>
+                <mat-form-field class="input-md">
+                    <input matInput type="number" placeholder="Prestação" name="prestacaopretendida"
+                        [ngModel]="lead.prestacaopretendida">
+                </mat-form-field>
+                <mat-form-field class="input-md">
+                    <mat-label>Dia Pagamento</mat-label>
+                    <mat-select name="diapagamento" [ngModel]="lead.diapagamento">
+                        <mat-option value="1">
+                            1
+                        </mat-option>
+                        <mat-option value="5">
+                            5
+                        </mat-option>
+                        <mat-option value="10">
+                            10
+                        </mat-option>
+                        <mat-option value="25">
+                            25
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <!-- Outras informações -->
+            <div>
+                <mat-form-field class="input-lg">
+                    <textarea matInput placeholder="Outras Informações" rows="1" name="info"
+                        [ngModel]="lead.info"></textarea>
+                </mat-form-field>
+            </div>
+
+            <mat-card-footer>
+                <button mat-flat-button color="success" type="button" (click)="nextStep(f)">Seguinte</button>
+                <button mat-flat-button color="warn" type="button" (click)="rejectLead()">Rejeitar</button>
+                <button mat-flat-button color="accent" (click)="back()">Cancelar</button>
+            </mat-card-footer>
+        </mat-card>
+        <!-- </div> -->
+    </form>
+</div>

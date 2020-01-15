@@ -1,0 +1,15 @@
+.container-fluid{
+    display: flex;
+    height: 85vh;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+}
+.col{
+    display: flex;
+    width: calc(100% / 3 - gutter / 2);
+}
+
+.col-sides{
+    display: flex;
+}

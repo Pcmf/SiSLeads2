@@ -7,10 +7,10 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class MuralDialogComponent implements OnInit {
 
-  @Input() msgObj: any[];
+  @Input() msgObj: any;
   @Input() userId: number;
 
-  public msg: any[];
+  public msg: any;
   public showMsg: true;
   public panelOpenState = true;
 

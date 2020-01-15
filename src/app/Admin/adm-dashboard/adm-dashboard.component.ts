@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+// import * as CanvasJS from './../../../assets/canvasjs.min.js';
+
 
 @Component({
   selector: 'app-adm-dashboard',
@@ -7,9 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdmDashboardComponent implements OnInit {
 
-  constructor() { }
+  ngOnInit() {}
 
-  ngOnInit() {
-  }
+
+
 
 }

@@ -5,7 +5,8 @@ import { MatInputModule,
     MatIconModule,
     MatDatepickerModule,
     MatTabsModule,
-    MatSidenavModule } from '@angular/material';
+    MatSidenavModule,
+    MatCheckboxModule } from '@angular/material';
 import {MatDialogModule } from '@angular/material/dialog';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
@@ -27,7 +28,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
         MatTableModule,
         MatTabsModule,
         MatSidenavModule,
-        MatExpansionModule
+        MatExpansionModule,
+        MatCheckboxModule
     ],
     exports: [
         MatInputModule,
@@ -41,6 +43,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
         MatTableModule,
         MatTabsModule,
         MatSidenavModule,
-        MatExpansionModule
+        MatExpansionModule,
+        MatCheckboxModule
     ]
 }) export class MatModulesImports { }

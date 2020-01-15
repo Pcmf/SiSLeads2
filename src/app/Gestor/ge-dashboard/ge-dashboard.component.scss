@@ -38,21 +38,28 @@ mat-card-content{
     margin: auto;
 }
 
-.leads-novas, leads-agendadas{
-    width: 100px;
+.leads-label{
+    width: 120px;
     height: 100px;
 }
 
 .leads-puxar{
-    width: 120px;
-    height: 65px;
-    margin-right: 50px;
-    padding: 35px 10px 1px 20px;
+    width: 160px;
+    height: 85px;
+    margin: auto;
+    padding: 7px 10px 1px 20px;
     border-radius: 8px;
-    background-color: green;
+    
     color: white;
 }
 
+.leads-puxar-novas{
+    background-color: green;
+}
+
+.leads-puxar-recuperacao{
+    background-color: orange;
+}
 .card-block{
     width: 90%;
     height: 80px;
@@ -92,15 +99,6 @@ mat-card-content{
     justify-content: space-evenly;
     margin: auto;
     
-}
-
-.leads-recuperar{
-    width: 100px;
-    height: 65px;
-    padding: 35px 10px 1px 20px;
-    border-radius: 8px;
-    background-color: orange;
-    color: white;
 }
 
 /* Pesquisa */

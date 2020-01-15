@@ -67,13 +67,16 @@ export class DataService {
   }
 
   getUserType() {
-    const token = sessionStorage.getItem('token');
-    return this.helper.decodeToken(token).tipo;
+    if (this.isLoggedIn) {
+      const token = sessionStorage.getItem('token');
+      return this.helper.decodeToken(token).tipo;
+    }
+
   }
 
   logout() {
     sessionStorage.clear();
-    window.location.reload();
+    window.location.replace('/');
   }
 
 }

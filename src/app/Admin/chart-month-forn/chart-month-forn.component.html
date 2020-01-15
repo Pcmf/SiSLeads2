@@ -1,0 +1,63 @@
+<mat-card style="width: 36rem;">
+  <mat-card-title>Mensal</mat-card-title>
+  <mat-card-subtitle>
+      <form #f="ngForm">
+          <mat-form-field style="width: 100px;">
+            <mat-label>Fornecedor</mat-label>
+            <mat-select #forn="ngModel" name="fornecedor" ngModel (selectionChange)="getData(f.value)">
+              <mat-option *ngFor="let f of fornecedores" [value]="f.id">{{f.nome}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field style="width: 70px;">
+            <mat-label>Ano</mat-label>
+            <mat-select [(value)]="ano" (selectionChange)="getData(f.value)">
+              <mat-option>None</mat-option>
+              <mat-option value="2018">2018</mat-option>
+              <mat-option value="2019">2019</mat-option>
+              <mat-option value="2020">2020</mat-option>
+              <mat-option value="2021">2021</mat-option>
+              <mat-option value="2022">2022</mat-option>
+              <mat-option value="2023">2023</mat-option>
+              <mat-option value="2024">2024</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field style="width: 70px;">
+            <mat-label>Mês</mat-label>
+            <mat-select [(value)]="mes" (selectionChange)="getData(f.value)">
+              <mat-option>None</mat-option>
+              <mat-option value="1">JAN</mat-option>
+              <mat-option value="2">FEV</mat-option>
+              <mat-option value="3">MAR</mat-option>
+              <mat-option value="4">ABR</mat-option>
+              <mat-option value="5">MAI</mat-option>
+              <mat-option value="6">JUN</mat-option>
+              <mat-option value="7">JUL</mat-option>
+              <mat-option value="8">AGO</mat-option>
+              <mat-option value="9">SET</mat-option>
+              <mat-option value="10">OUT</mat-option>
+              <mat-option value="11">NOV</mat-option>
+              <mat-option value="12">DEZ</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </form>
+  </mat-card-subtitle>
+  <mat-card-content>
+      <div style="display: block" *ngIf="show">
+          <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
+             [legend]="barChartLegend" [chartType]="barChartType">
+          </canvas>
+        </div>
+  </mat-card-content>
+</mat-card>
+
+
+<!-- <div class="graf1">
+  
+  <div style="height: 300px; width: 100%; margin-left: 10px;">
+    <div>
+      <div>
+        
+      </div>
+    </div>
+  </div>
+</div> -->

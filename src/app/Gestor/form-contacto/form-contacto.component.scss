@@ -1,0 +1,75 @@
+.header{
+    width: 90%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.mat-form-field{
+    margin-right: 40px;
+}
+.mat-card-footer{
+    display: flex;
+    justify-content: center;
+
+    & button{
+        margin: 10px;
+    }
+}
+
+
+.card-dados-lead{
+    width: 50%;
+    margin-top:20px;
+    background-color: antiquewhite;
+}
+.card-space-between{
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-main{
+    width: 60%;
+    margin: 20px auto;
+    background-color: #cccccc;
+}
+
+.call-buttons{
+    margin-top: 15px;
+    & button{
+    margin: 5px
+    }
+}
+
+.onCall{
+    transition: all 1s;
+}
+
+/* Formulario principal */
+.main{
+    margin: auto;
+    margin-top: 20px;
+    width: 90%;
+    border: 1px gray solid;
+    padding: 20px;
+    border-radius: 10px;
+    
+}
+.line{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.input-sm{
+    width: 50px;
+}
+.input-md{
+    width: 150px;
+}
+.input-lg{
+    width: 360px;
+}
+.input-xl{
+    width: 360px;
+}

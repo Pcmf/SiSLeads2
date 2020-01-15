@@ -1,0 +1,32 @@
+<mat-toolbar color="accent" class="mat-elevation-z6">
+  <div>
+    <a routerLink="/admin">GESTLIFES v2.0</a>
+  </div>
+  <div fxFlex fxLayout fxLayoutAlign="end">
+    <ul fxLayout fxLayoutGap="15px" class="navigation-items">
+    <!--   <li>
+        <mat-icon aria-hidden="false" aria-label="Example create icon">create</mat-icon>
+        <a routerLink="/criar" class="menu-link">Criar Lead</a>
+      </li>
+      <li>
+        <mat-icon aria-hidden="false" aria-label="Example vpn_key icon">vpn_key</mat-icon>
+        <a routerLink="/portal" class="menu-link">Portal Cliente</a>
+      </li> -->
+      <li>
+        <mat-icon aria-hidden="false" aria-label="Example timeline icon">timeline</mat-icon>
+        <a routerLink="/historico" class="menu-link">Histórico</a>
+      </li>
+      <li>
+        <mat-icon aria-hidden="false" aria-label="Utilizador">person</mat-icon>
+        <a routerLink="/user" class="menu-link">{{user}}</a>
+      </li>
+      <li>
+        <span  class="menu-link" (click)="logout()">
+          <mat-icon aria-hidden="false" aria-label="Example logout icon">logout</mat-icon>
+          <small>SAIR</small>
+        </span>
+        
+      </li>
+    </ul>
+  </div>
+</mat-toolbar>
