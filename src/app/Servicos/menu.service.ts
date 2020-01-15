@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
-import { Subscription, Subject, Observable } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MenuService {
   private subject = new Subject<string>();
+
+
 
   // Selecionar o menu
   setMenu(tipo: string) {

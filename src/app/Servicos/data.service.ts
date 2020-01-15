@@ -37,7 +37,6 @@ export class DataService {
       JSON.stringify(credenciais))
       .pipe(
         map((response: any) => {
-          console.log(response);
           if (response) {
             sessionStorage.setItem('token', response);
             return true;
@@ -67,7 +66,7 @@ export class DataService {
   }
 
   getUserType() {
-    if (this.isLoggedIn) {
+    if (this.isLoggedIn()) {
       const token = sessionStorage.getItem('token');
       return this.helper.decodeToken(token).tipo;
     }

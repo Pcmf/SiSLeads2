@@ -18,7 +18,6 @@ export class LoginComponent implements OnInit {
   submit(form) {
     this.dataService.checkUser(form).subscribe(
       resp => {
-        console.log(resp);
         if (resp) {
           switch (this.dataService.getUserType()) {
             case 'Gestor':
@@ -30,7 +29,7 @@ export class LoginComponent implements OnInit {
               this.router.navigate(['/analista']);
               break;
             case 'Administrador':
-              this.menuService.setMenu('Admin');
+              this.menuService.setMenu('Administrador');
               this.router.navigate(['/admin']);
               break;
             default:
